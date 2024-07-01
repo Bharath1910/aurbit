@@ -1,0 +1,18 @@
+<h1 class="text-white text-3xl font-bold mb-4">Sign Up</h1>
+<form class="flex flex-col gap-4">
+	<input class="px-4 py-2 text-lg rounded-lg bg-accent text-white" type="text" name="username" placeholder="Username">
+	<input class="px-4 py-2 text-lg rounded-lg bg-accent text-white"  type="password" name="password" placeholder="Password">
+	<input class="px-4 py-2 text-lg rounded-lg bg-accent text-white" type="password" name="re_password" placeholder="Retype Password">
+	<button
+		hx-post="/api/signup" 
+		hx-push-url="/login"
+		hx-target="#form"
+		class="bg-brand rounded-full py-2 text-m text-white font-bold"
+		type="submit"
+	>
+		Sign Up
+		<img class="htmx-indicator inline w-4" src="/spinner.svg" alt="spinner">
+	</button>
+</form>
+<p id="error" class="text-error m-1 text-sm break-normal w-56"></p>
+<p class="text-white text-md mt-10">Have an account? <a href="/login" class="text-brand cursor-pointer">Log In</a></p>

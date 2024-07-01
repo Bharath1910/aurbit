@@ -8,14 +8,12 @@
 	<title>Auth</title>
 </head>
 <body class="bg-black flex justify-center items-center h-screen">
-	<div id="form" class="bg-black px-5 py-10">
-		<h1 class="text-white text-3xl font-bold mb-4">Log In</h1>
-		<form class="flex flex-col gap-4">
-			<input class="px-4 py-2 text-lg rounded-lg bg-accent text-white" type="text" name="username" placeholder="Username">
-			<input class="px-4 py-2 text-lg rounded-lg bg-accent text-white"  type="password" name="password" placeholder="Password">
-			<button hx-post="/api/signup" hx-push-url="/login" hx-target="#form" class="bg-brand rounded-full py-2 text-m text-white font-bold" type="button">Login</button>
-		</form>
-		<p class="text-white text-md mt-10">New to Aurbit? <a href="/signup" class="text-brand cursor-pointer">Sign Up</a></p>
-	</div>
+	<div
+		id="form"
+		class="bg-black px-5 py-10"
+		hx-get="/api/login"
+		hx-target="#form"
+		hx-trigger="load"
+	></div>
 </body>
 </html>

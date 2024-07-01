@@ -7,6 +7,7 @@ module.exports = {
         'brand': '#FF4500',
         'accent': '#2A3236',
         'background': '#0E1113',
+        'error': '#FF4F40'
       },
     },
   },
