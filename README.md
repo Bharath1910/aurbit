@@ -10,7 +10,6 @@ I was surprised after learning about how many stuffs can be natively handled by 
 # Journal
 
 - **30/06/2024:** Completed a basic signup and login page
-
 ---
 
 - **01/07/2024:** Database schema setup
@@ -93,3 +92,7 @@ model members {
   @@id([username, community_id])
 }
 ```
+
+After completing the schema, I was going through the public login and signup page, I felt like the pages have 2 sources. What im trying to say is, the login page in the public directory has an HTML and the login page returned from the server also has the same HTML. It is not DRY code. I wanted to keep these HTMLs single source, so I decided to use HTMX with `hx-trigger="load"` to fetch the login and signup pages from the server. This way I can keep the public directory clean.
+
+The requests are even cached with `Cache-Control` header, so that the browser and proxy servers can cache these requests. This way the page load time and load on the server is reduced.

@@ -3,7 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 	<script src="https://unpkg.com/htmx.org@2.0.0" integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="/style.css">
 	<title>Auth</title>
@@ -16,5 +15,12 @@
 		hx-target="#form"
 		hx-trigger="load"
 	></div>
+
+	<script>
+		document.body.addEventListener('htmx:beforeSwap', function(evt) {
+			evt.detail.shouldSwap = true;
+			evt.detail.isError = false;
+		});
+	</script>
 </body>
 </html>

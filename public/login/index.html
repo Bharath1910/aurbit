@@ -15,5 +15,11 @@
 		hx-target="#form"
 		hx-trigger="load"
 	></div>
+	<script>
+		document.body.addEventListener('htmx:beforeSwap', function(evt) {
+			evt.detail.shouldSwap = true;
+			evt.detail.isError = false;
+		});
+	</script>
 </body>
 </html>
