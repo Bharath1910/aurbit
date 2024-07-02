@@ -1,10 +1,9 @@
-import express from "express";
 import { config } from "dotenv";
-import { StatusCodes } from "http-status-codes";
+config();
+import express from "express";
 import login from "./routes/auth/login";
 import signup from "./routes/auth/signup";
 
-config();
 const app = express();
 
 app.set("view engine", "ejs");

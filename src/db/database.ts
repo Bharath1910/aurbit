@@ -1,14 +1,10 @@
-import { DB } from './types.ts' 
+import { DB } from './types' 
 import { Pool } from 'pg'
 import { Kysely, PostgresDialect } from 'kysely'
 
 const dialect = new PostgresDialect({
   pool: new Pool({
-    database: 'test',
-    host: 'localhost',
-    user: 'admin',
-    port: 5434,
-    max: 10,
+    connectionString: process.env.DATABASE_URL,
   })
 })
 
