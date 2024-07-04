@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<title>Aurbit</title>
+</head>
+<body class="bg-black">
+	<nav class="h-20 border-accent border-b-[1px] px-8 flex items-center justify-between">
+		<div class="flex items-center gap-2 w-fit">
+			<img class="w-8" src="/logo.png" alt="aurbit-logo">
+			<p class="text-white">Aurbit</p>
+		</div>
+
+		<div class="hidden sm:flex justify-between w-48">
+			<a href="/signup" class="text-center bg-brand text-white px-4 py-2 rounded-md">Sign Up</a>
+			<a href="/login" class="text-center bg-accent text-white px-4 py-2 rounded-md">Log In</a>
+		</div>
+
+		<div onclick="toggleMenu()" class="sm:hidden">
+			<i class="text-white text-xl fa-solid fa-bars"></i>
+		</div>
+	</nav>
+
+	<main class="flex px-8 h-[100vh]">
+		<div class="content flex-[6] pt-8">
+			<div>
+				<img 
+					class="w-full rounded-lg aspect-square"
+					src="https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/bd93ce7e-8f73-469c-851c-14168d3e6200/width=1200/bd93ce7e-8f73-469c-851c-14168d3e6200.jpeg"
+					alt=""
+				>
+				<div>
+					<h1 class="">Akane Kinoshita</h1>
+				</div>
+			</div>
+		</div>
+
+		<div id="menucontent" class="
+			 hidden absolute right-0 bg-black border-accent border-l-2 w-[60vw] h-full p-2 text-white
+			sm:static sm:p-0 sm:py-8 sm:pl-8 sm:flex-[4] md:flex-[3] lg:flex-[2] xl:flex-[1]
+		">
+			<div class="flex flex-wrap gap-2 sm:hidden">
+				<a class="w-full text-center bg-brand px-4 py-2 rounded-md" href="/login">Log In</a>
+				<a class="w-full text-center bg-accent px-4 py-2 rounded-md" href="/signup">Sign Up</a>
+			</div>
+
+			<div class="border-accent border-y-[1px] w-full my-3 sm:hidden"></div>
+			
+			<div>
+				<button class="bg-accent text-center px-4 w-full py-2 rounded-md mb-2" type="button">Submit a new post</button>
+				<button class="bg-accent text-center px-4 w-full py-2 rounded-md" type="button">Create a community</button>
+			</div>
+			
+			<div class="border-accent border-y-[1px] w-full my-3"></div>
+			<div>
+				<h1 class="font-bold mb-2">Popular communities</h1>
+				<div class="px-2">
+					<p>aww</p>
+					<p>trains</p>
+					<p>bitchimatrain</p>
+					<p>aurbit</p>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<script>
+		function toggleMenu() {
+			const nav = document.getElementById('menucontent');
+			nav.classList.toggle('hidden');
+		}
+	</script>
+</body>
+</html>
