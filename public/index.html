@@ -26,15 +26,34 @@
 
 	<main class="flex px-8 h-[100vh]">
 		<div class="content flex-[6] pt-8">
-			<div>
+			<div class="post rounded-lg">
 				<img 
-					class="w-full rounded-lg aspect-square"
+					class="
+						w-full rounded-lg aspect-square
+						sm:w-52
+					"
 					src="https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/bd93ce7e-8f73-469c-851c-14168d3e6200/width=1200/bd93ce7e-8f73-469c-851c-14168d3e6200.jpeg"
 					alt=""
 				>
-				<div>
-					<h1 class="">Akane Kinoshita</h1>
+				<div class="flex flex-col text-white">
+					<h1 class="text-xl my-2 font-bold">Akane Kinoshita</h1>
+					<p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, facilis.</p>
+					<div class="flex items-center w-full justify-between py-2 bg-accent px-2 font-bold rounded-lg my-2">
+						<div class="flex items-center gap-1">
+							<i class="fa-solid fa-up-long"></i>
+							<p class="">Upvote</p>
+							<p class="font-normal mr-6">19K</p>
+						</div>
+
+						<div class="flex items-center gap-1">
+							<i class="fa-solid fa-down-long"></i>
+							<p>Downvote</p>
+						</div>
+					</div>
+					<p class="w-full bg-accent text-center rounded-lg py-2"><i class="fa-solid fa-comment"></i> Comments</p>
 				</div>
+
+				<div class="border-accent border-y-[1px] w-full my-3 sm:hidden"></div>
 			</div>
 		</div>
 
