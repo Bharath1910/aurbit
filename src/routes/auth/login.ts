@@ -47,7 +47,7 @@ login.post("/", async (req, res) => {
 
 	res.cookie('token', token, {
 		sameSite: 'strict',
-		httpOnly: true,	
+		httpOnly: true,
 	});
 	res.status(StatusCodes.NO_CONTENT).send();
 });

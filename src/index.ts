@@ -21,6 +21,9 @@ app.use("/api", api);
 api.use("/login", login);
 api.use("/signup", signup);
 
-app.listen(process.env.PORT ?? 3000, () => {
+const port = parseInt(process.env.PORT ?? "3000");
+const hostName = process.env.HOST ?? "localhost";
+
+app.listen(port, hostName,() => {
 	console.log(`Server is running on http://localhost:${process.env.PORT ?? 3000}`);
 })
