@@ -4,7 +4,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script defer type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script defer nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 	<title>Aurbit</title>
 </head>
 <body class="bg-black">
@@ -20,46 +21,45 @@
 		</div>
 
 		<div onclick="toggleMenu()" class="sm:hidden">
-			<i class="text-white text-xl fa-solid fa-bars"></i>
+			<ion-icon class="text-white text-xl" name="menu"></ion-icon>
 		</div>
 	</nav>
 
 	<main class="flex px-8 h-[100vh]">
 		<div class="content flex-[6] pt-8">
-			<div class="post rounded-lg">
+			<div class="post rounded-lg sm:flex gap-4">
 				<img 
 					class="
 						w-full rounded-lg aspect-square
-						sm:w-52
+						sm:w-52 lg:w-80 hidden
 					"
 					src="https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/bd93ce7e-8f73-469c-851c-14168d3e6200/width=1200/bd93ce7e-8f73-469c-851c-14168d3e6200.jpeg"
 					alt=""
 				>
-				<div class="flex flex-col text-white">
-					<h1 class="text-xl my-2 font-bold">Akane Kinoshita</h1>
-					<p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, facilis.</p>
-					<div class="flex items-center w-full justify-between py-2 bg-accent px-2 font-bold rounded-lg my-2">
-						<div class="flex items-center gap-1">
-							<i class="fa-solid fa-up-long"></i>
-							<p class="">Upvote</p>
-							<p class="font-normal mr-6">19K</p>
-						</div>
-
-						<div class="flex items-center gap-1">
-							<i class="fa-solid fa-down-long"></i>
-							<p>Downvote</p>
-						</div>
+				<div class="
+					flex flex-col text-white
+					md:justify-between sm:w-full
+				">
+					<div>
+						<h1 class="text-xl font-bold lg:text-3xl pt-2">Akane Kinoshita</h1>
+						<p class="text-sm py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, voluptate repellendus esse fuga architecto beatae minus eligendi accusantium eveniet pariatur distinctio deleniti quae in reiciendis facilis aut voluptatum cupiditate quasi officiis animi eius deserunt. Blanditiis assumenda nobis corrupti iusto eos!</p>
 					</div>
-					<p class="w-full bg-accent text-center rounded-lg py-2"><i class="fa-solid fa-comment"></i> Comments</p>
+					
+					<div class="control bg-accent flex justify-between p-2 rounded-lg">
+						<div>
+							<button class="align-middle"><ion-icon class="align-middle text-2xl" name="caret-up-circle"></ion-icon> 16k</button>
+							<button class="align-middle"><ion-icon  class="align-middle text-2xl" name="caret-down-circle"></ion-icon></button>
+						</div>
+						<button class="align-middle"><ion-icon class="align-middle" name="chatbubble"></ion-icon> comments</button>
+					</div>
 				</div>
-
-				<div class="border-accent border-y-[1px] w-full my-3 sm:hidden"></div>
 			</div>
+			<div class="border-accent border-y-[1px] w-full my-3 text-white"></div>
 		</div>
 
 		<div id="menucontent" class="
-			 hidden absolute right-0 bg-black border-accent border-l-2 w-[60vw] h-full p-2 text-white
-			sm:static sm:p-0 sm:py-8 sm:pl-8 sm:flex-[4] md:flex-[3] lg:flex-[2] xl:flex-[1]
+			hidden absolute right-0 bg-black border-accent border-l-2 w-[60vw] h-full p-2 text-white
+			sm:block sm:static sm:p-0 sm:py-8 sm:pl-8 sm:flex-[4] md:flex-[3] lg:flex-[2] xl:flex-[1]
 		">
 			<div class="flex flex-wrap gap-2 sm:hidden">
 				<a class="w-full text-center bg-brand px-4 py-2 rounded-md" href="/login">Log In</a>
