@@ -49,6 +49,7 @@ login.post("/", async (req, res) => {
 		sameSite: 'strict',
 		httpOnly: true,
 	});
+	res.header("HX-Redirect", "/")
 	res.status(StatusCodes.NO_CONTENT).send();
 });
 

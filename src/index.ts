@@ -3,12 +3,14 @@ config();
 import express from "express";
 import login from "./routes/auth/login";
 import signup from "./routes/auth/signup";
+import cookieParser from "cookie-parser";
 
 const app = express();
 
 app.set("view engine", "ejs");
 app.set("views", "src/templates");
 
+app.use(cookieParser());
 app.use("/", express.static( "public"));
 app.use(express.json());
 app.use(express.urlencoded({
