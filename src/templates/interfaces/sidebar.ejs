@@ -1,0 +1,32 @@
+<div id="menucontent" class="
+	hidden absolute right-0 bg-black border-accent border-l-2 w-[60vw] h-full p-2 text-white
+	sm:block sm:static sm:p-0 sm:py-8 sm:pl-8 sm:flex-[4] md:flex-[3] lg:flex-[2] xl:flex-[1]
+">
+	<div class="flex flex-wrap gap-2 sm:hidden">
+		<% if (authenticated) { %>
+			<a class="w-full text-center bg-brand px-4 py-2 rounded-md" href="/u/<%= username %>">Profile</a>
+			<a class="w-full text-center bg-accent px-4 py-2 rounded-md" href="/logout">Log Out</a>
+		<% } else { %>
+			<a class="w-full text-center bg-brand px-4 py-2 rounded-md" href="/login">Log In</a>
+			<a class="w-full text-center bg-accent px-4 py-2 rounded-md" href="/signup">Sign Up</a>
+		<% }%>
+	</div>
+
+	<div class="border-accent border-y-[1px] w-full my-3 sm:hidden"></div>
+			
+	<div>
+		<button class="bg-accent text-center px-4 w-full py-2 rounded-md mb-2" type="button">Submit a new post</button>
+		<button class="bg-accent text-center px-4 w-full py-2 rounded-md" type="button">Create a community</button>
+	</div>
+			
+	<div class="border-accent border-y-[1px] w-full my-3"></div>
+	<div>
+		<h1 class="font-bold mb-2">Popular communities</h1>
+		<div class="px-2">
+			<p>aww</p>
+			<p>trains</p>
+			<p>bitchimatrain</p>
+			<p>aurbit</p>
+		</div>
+	</div>
+</div>
