@@ -1,0 +1,26 @@
+<nav class="h-20 border-accent border-b-[1px] px-8 flex items-center justify-between">
+	<div class="flex items-center gap-2 w-fit">
+		<img class="w-8" src="/logo.png" alt="aurbit-logo">
+		<p class="text-white">Aurbit</p>
+	</div>
+
+	<div class="hidden sm:flex justify-between gap-4">
+		<% if (authenticated) { %>
+			<a href="/u/<%= username %>" class="text-brand flex items-center"><%= username %></a>
+			<a href="/logout" class="text-center bg-accent text-white px-4 py-2 rounded-md">Log Out</a>
+		<% } else { %>
+			<a href="/signup" class="text-center bg-brand text-white px-4 py-2 rounded-md">Sign Up</a>
+			<a href="/login" class="text-center bg-accent text-white px-4 py-2 rounded-md">Log In</a>
+		<% }%>
+	</div>
+
+	<div onclick="toggleMenu()" class="sm:hidden">
+		<ion-icon class="text-white text-xl" name="menu"></ion-icon>
+	</div>
+	<script>
+		function toggleMenu() {
+			const nav = document.getElementById('menucontent');
+			nav.classList.toggle('hidden');
+		}
+	</script>
+</nav>

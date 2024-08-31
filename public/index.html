@@ -6,24 +6,11 @@
 	<link rel="stylesheet" href="/style.css">
 	<script defer type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 	<script defer nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+	<script src="https://unpkg.com/htmx.org@2.0.0" integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw" crossorigin="anonymous"></script>
 	<title>Aurbit</title>
 </head>
 <body class="bg-black">
-	<nav class="h-20 border-accent border-b-[1px] px-8 flex items-center justify-between">
-		<div class="flex items-center gap-2 w-fit">
-			<img class="w-8" src="/logo.png" alt="aurbit-logo">
-			<p class="text-white">Aurbit</p>
-		</div>
-
-		<div class="hidden sm:flex justify-between w-48">
-			<a href="/signup" class="text-center bg-brand text-white px-4 py-2 rounded-md">Sign Up</a>
-			<a href="/login" class="text-center bg-accent text-white px-4 py-2 rounded-md">Log In</a>
-		</div>
-
-		<div onclick="toggleMenu()" class="sm:hidden">
-			<ion-icon class="text-white text-xl" name="menu"></ion-icon>
-		</div>
-	</nav>
+	<nav id="navbar" hx-get="/api/interfaces/navbar" hx-target="#navbar" hx-swap="outerHTML" hx-trigger="load">test</nav>
 
 	<main class="flex px-8 h-[100vh]">
 		<div class="content flex-[6] pt-8">
