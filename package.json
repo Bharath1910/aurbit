@@ -21,6 +21,7 @@
     "http-status-codes": "^2.3.0",
     "jsonwebtoken": "^9.0.2",
     "kysely": "^0.27.3",
+    "minio": "^8.0.2",
     "pg": "^8.12.0",
     "prisma-kysely": "^1.8.0"
   },
@@ -29,6 +30,7 @@
     "@types/cookie-parser": "^1.4.7",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
+    "@types/minio": "^7.1.0",
     "@types/node": "^20.14.8",
     "@types/pg": "^8.11.6",
     "nodemon": "^3.1.4",
