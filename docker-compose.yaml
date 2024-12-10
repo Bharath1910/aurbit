@@ -1,0 +1,34 @@
+services:
+  dev-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5050:5050"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    develop:
+      watch:
+        - path: ./package.json
+          action: rebuild
+    profiles:
+      - development
+
+  dev-minio:
+    image: quay.io/minio/minio
+    ports:
+      - 9000:9000
+      - 9001:9001   
+    volumes:
+      - dev-minio-data:/data
+    env_file:
+      - .env
+    profiles:
+      - development
+
+    command: server /data --console-address ":9001"
+    
+volumes:
+  dev-minio-data:
