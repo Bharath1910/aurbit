@@ -1,11 +1,12 @@
 import { Request, Response, NextFunction } from "express";
 import * as jwt from "jsonwebtoken";
+import { StatusCodes } from "http-status-codes";
 
 export default async function auth(req: Request, res: Response, next: NextFunction) {
 	if (req.cookies.token === undefined) {
 		res.header("HX-Retarget", "#error")
 		res.header("HX-Replace-Url", "/login")
-		res.status(401).send("Unauthorized");
+		res.status(StatusCodes.UNAUTHORIZED).send("Unauthorized");
 		return;
 	}
 
@@ -15,7 +16,7 @@ export default async function auth(req: Request, res: Response, next: NextFuncti
 		console.error("JWT_SECRET not set")
 		res.header("HX-Retarget", "#error")
 		res.header("HX-Replace-Url", "/login")
-		res.status(500).send("Internal Server Error");
+		res.status(StatusCodes.INTERNAL_SERVER_ERROR).send("Internal Server Error");
 		return;
 	}
 
@@ -26,7 +27,7 @@ export default async function auth(req: Request, res: Response, next: NextFuncti
 	} catch (error) {
 		res.header("HX-Retarget", "#error")
 		res.header("HX-Replace-Url", "/login")
-		res.status(401).send("Unauthorized");
+		res.status(StatusCodes.UNAUTHORIZED).send("Unauthorized");
 		return;
 	}
 
@@ -43,11 +44,10 @@ export async function authForgiving(req: Request, res: Response, next: NextFunct
 	const token = req.cookies.token;
 	const secret = process.env.JWT_SECRET
 	if (!secret) {
-		console.log(secret);
 		console.error("JWT_SECRET not set")
 		res.header("HX-Retarget", "#error")
 		res.header("HX-Replace-Url", "/login")
-		res.status(500).send("Internal Server Error");
+		res.status(StatusCodes.INTERNAL_SERVER_ERROR).send("Internal Server Error");
 		return;
 	}
 
@@ -58,7 +58,7 @@ export async function authForgiving(req: Request, res: Response, next: NextFunct
 	} catch (error) {
 		res.header("HX-Retarget", "#error")
 		res.header("HX-Replace-Url", "/login")
-		res.status(401).send("Unauthorized");
+		res.status(StatusCodes.UNAUTHORIZED).send("Unauthorized");
 		return;
 	}
 

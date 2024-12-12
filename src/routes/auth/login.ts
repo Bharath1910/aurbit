@@ -15,7 +15,7 @@ login.post("/", async (req, res) => {
 	if (req.body.username === '' || req.body.password === '') {
 		res.header("HX-Retarget", "#error")
 		res.header("HX-Replace-Url", "/login")
-		res.status(400).send("username and password are required");
+		res.status(StatusCodes.BAD_REQUEST).send("username and password are required");
 		return;
 	}
 
@@ -28,7 +28,7 @@ login.post("/", async (req, res) => {
 	if (user === undefined) {
 		res.header("HX-Retarget", "#error")
 		res.header("HX-Replace-Url", "/login")
-		res.status(400).send("User does not exist");
+		res.status(StatusCodes.BAD_REQUEST).send("User does not exist");
 		return;
 	}
 
