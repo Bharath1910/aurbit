@@ -36,9 +36,8 @@ model posts {
   id           String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   community_id String
   title        String
+  votes        Int     @default(0)
   content      String?
-  upvotes      Int     @default(0)
-  downvotes    Int     @default(0)
   image        String?
 
   community communities @relation(fields: [community_id], references: [name])

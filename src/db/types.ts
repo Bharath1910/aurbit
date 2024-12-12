@@ -16,9 +16,8 @@ export type posts = {
     id: Generated<string>;
     community_id: string;
     title: string;
+    votes: Generated<number>;
     content: string | null;
-    upvotes: Generated<number>;
-    downvotes: Generated<number>;
     image: string | null;
 };
 export type users = {
