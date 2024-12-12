@@ -17,36 +17,14 @@
 		hx-trigger="load"
 	></nav>
 
-	<main class="flex px-8 h-[100vh]">
-		<div class="content flex-[6] pt-8">
-			<div class="post rounded-lg sm:flex gap-4">
-				<img 
-					class="
-						w-full rounded-lg aspect-square
-						sm:w-52 lg:w-80 hidden
-					"
-					src="https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/bd93ce7e-8f73-469c-851c-14168d3e6200/width=1200/bd93ce7e-8f73-469c-851c-14168d3e6200.jpeg"
-					alt=""
-				>
-				<div class="
-					flex flex-col text-white
-					md:justify-between sm:w-full
-				">
-					<div>
-						<h1 class="text-xl font-bold lg:text-3xl pt-2">Akane Kinoshita</h1>
-						<p class="text-sm py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, voluptate repellendus esse fuga architecto beatae minus eligendi accusantium eveniet pariatur distinctio deleniti quae in reiciendis facilis aut voluptatum cupiditate quasi officiis animi eius deserunt. Blanditiis assumenda nobis corrupti iusto eos!</p>
-					</div>
-					
-					<div class="control bg-accent flex justify-between p-2 rounded-lg">
-						<div>
-							<button class="align-middle"><ion-icon class="align-middle text-2xl" name="caret-up-circle"></ion-icon> 16k</button>
-							<button class="align-middle"><ion-icon  class="align-middle text-2xl" name="caret-down-circle"></ion-icon></button>
-						</div>
-						<button class="align-middle"><ion-icon class="align-middle" name="chatbubble"></ion-icon> comments</button>
-					</div>
-				</div>
-			</div>
-			<div class="border-accent border-y-[1px] w-full my-3 text-white"></div>
+	<main class="flex px-4 h-[100vh]">
+		<div 
+			class="sm:w-[65%] md:w-[70%] lg:w-[75%] xl:w-[80%] pr-4"
+			hx-get="/api/posts"
+			hx-target="this"
+			hx-swap="innerHTML"
+			hx-trigger="load"
+		>
 		</div>
 
 		<div 
