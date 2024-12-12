@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/style.css">
+	<script defer type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script defer nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+	<script src="https://unpkg.com/htmx.org@2.0.0" integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw" crossorigin="anonymous"></script>
+	<title>Aurbit</title>
+</head>
+<body class="bg-black h-[100vh]">
+	<nav 
+		hx-get="/api/interfaces/navbar" 
+		hx-target="this" 
+		hx-swap="outerHTML" 
+		hx-trigger="load"
+	></nav>
+
+	<main class="px-4 flex justify-center items-center h-[80%]">
+		<div class="border-accent border-2 rounded-xl p-5">
+			<h1 class="text-white text-lg sm:text-3xl font-bold mb-4 sm:mb-8">Create a new post</h1>
+			<form>
+				<input class="px-4 py-2 text-lg rounded-lg bg-accent text-white mt-4 block w-full" type="text" name="community" placeholder="Community">
+				<input class="px-4 py-2 text-lg rounded-lg bg-accent text-white mt-4 block w-full" type="text" name="title" placeholder="Title">
+				<textarea class="h-40 px-4 py-2 text-lg rounded-lg bg-accent text-white mt-4 block w-full" type="text" name="content" placeholder="Content"></textarea>
+				<div class="flex justify-between items-center mt-4">
+					<p id="error" class="text-error m-1 text-sm break-normal w-56"></p>
+					<button
+						hx-post="/api/posts"
+						class="bg-brand rounded-full py-1 text-m text-white font-semibold px-3"
+						type="submit"
+					>
+					Create
+					<img class="htmx-indicator inline w-4" src="/spinner.svg" alt="spinner">
+				</button>
+			</div>
+			</form>
+		</div>
+	</main>
+</body>
+<script>
+	document.body.addEventListener('htmx:beforeSwap', function(evt) {
+		evt.detail.shouldSwap = true;
+		evt.detail.isError = false;
+	});
+</script>
+</html>
