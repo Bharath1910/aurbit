@@ -1,0 +1,19 @@
+<div class="content flex-[6] pt-4">
+	<div class="post">
+		<div>
+			<a href="<%= link %>" target="_blank" class="text-white text-3xl font-bold mb-2"><%= title %></a>
+			<div class="h-24 overflow-clip">
+				<p class="text-[#4C555A] text-sm"><% content %></p>
+			</div>
+			<div class="blur-[6px] w-full h-3 bg-black relative bottom-2"></div>
+		</div>
+		<div class="controls flex justify-between md:justify-start mt-2">
+			<div>
+				<button class="bg-black border-accent border-[1px] rounded-tl-full rounded-bl-full text-white text-sm pr-2"><ion-icon class="align-middle text-xl text-white pl-2 py-1" name="chevron-up"></ion-icon> <%= upvotes %></button>
+				<button class="bg-black border-accent border-[1px] rounded-tr-full rounded-br-full"><ion-icon class="align-middle text-xl text-white pl-1 pr-2 py-1" name="chevron-down"></ion-icon></button>
+			</div>
+			<button class="bg-black border-accent border-[1px] md:ml-2 rounded-full text-white px-2"><ion-icon class="align-middle text-xl text-white" name="chatbubbles-outline"></ion-icon> <%= comments %></button>
+		</div>
+	</div>
+	<div class="border-accent border-y-[1px] w-full my-2 text-white"></div>
+</div>
