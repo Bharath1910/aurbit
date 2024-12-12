@@ -41,9 +41,10 @@ export async function authForgiving(req: Request, res: Response, next: NextFunct
 	}
 
 	const token = req.cookies.token;
-	const secret = process.env.JWT_TOKEN
+	const secret = process.env.JWT_SECRET
 	if (!secret) {
-		console.error("JWT_TOKEN not set")
+		console.log(secret);
+		console.error("JWT_SECRET not set")
 		res.header("HX-Retarget", "#error")
 		res.header("HX-Replace-Url", "/login")
 		res.status(500).send("Internal Server Error");

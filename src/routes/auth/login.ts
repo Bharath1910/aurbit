@@ -42,7 +42,7 @@ login.post("/", async (req, res) => {
 
 	const token = jwt.sign(
 		{username: req.body.username}, 
-		process.env.JWT_TOKEN as string,
+		process.env.JWT_SECRET as string,
 	);
 
 	res.cookie('token', token, {
