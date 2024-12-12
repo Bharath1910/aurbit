@@ -6,6 +6,7 @@ import signup from "./routes/auth/signup";
 import interfaces from "./routes/main/interfaces";
 import cookieParser from "cookie-parser";
 import posts from "./routes/main/posts";
+import community from "./routes/main/community";
 
 const app = express();
 
@@ -26,6 +27,7 @@ api.use("/login", login);
 api.use("/signup", signup);
 api.use("/interfaces", interfaces);
 api.use("/posts", posts);
+api.use("/community", community);
 
 const port = parseInt(process.env.PORT ?? "3000");
 const hostName = process.env.HOST ?? "localhost";
