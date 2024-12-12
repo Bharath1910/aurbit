@@ -23,15 +23,19 @@ model users {
   aura     Int     @default(0)
   bio      String?
 
-  joined members[]
-  posts  posts[]
+  joined      members[]
+  posts       posts[]
+  communities communities[]
 }
 
 model communities {
-  name        String    @id
+  name        String  @id
   description String?
-  posts       posts[]
-  members     members[]
+  owner       String
+
+  user    users     @relation(fields: [owner], references: [username])
+  posts   posts[]
+  members members[]
 }
 
 model posts {

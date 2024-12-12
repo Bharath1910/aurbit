@@ -7,6 +7,7 @@ export type Timestamp = ColumnType<Date, Date | string, Date | string>;
 export type communities = {
     name: string;
     description: string | null;
+    owner: string;
 };
 export type members = {
     community_id: string;
