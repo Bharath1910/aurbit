@@ -23,6 +23,8 @@ community.post("/new", async(req, res) => {
 			.execute();
 		
 		res.header("HX-Redirect", "/");
+		res.status(StatusCodes.CREATED).send();
+		return;
 	} catch (err: any) {
 		if (err.code === '23505') {
 			res.header("HX-Retarget", "#error");
