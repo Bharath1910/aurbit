@@ -17,12 +17,14 @@ datasource db {
 }
 
 model users {
-  username String    @id
+  username String  @id
   password String
   pfp      String?
-  aura     Int       @default(0)
+  aura     Int     @default(0)
   bio      String?
-  joined   members[]
+
+  joined members[]
+  posts  posts[]
 }
 
 model communities {
@@ -33,13 +35,16 @@ model communities {
 }
 
 model posts {
-  id           String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   community_id String
+  username     String
   title        String
-  votes        Int     @default(0)
+  votes        Int      @default(0)
   content      String?
   image        String?
+  created_at   DateTime @default(now())
 
+  user      users       @relation(fields: [username], references: [username])
   community communities @relation(fields: [community_id], references: [name])
 }
 

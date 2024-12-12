@@ -15,10 +15,12 @@ export type members = {
 export type posts = {
     id: Generated<string>;
     community_id: string;
+    username: string;
     title: string;
     votes: Generated<number>;
     content: string | null;
     image: string | null;
+    created_at: Generated<Timestamp>;
 };
 export type users = {
     username: string;
