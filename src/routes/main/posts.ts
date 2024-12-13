@@ -14,7 +14,7 @@ posts.get("/", async(req, res) => {
 
 	const posts = await db
 		.selectFrom('posts')
-		.select(['title', 'content', 'votes'])
+		.select(['id', 'title', 'content', 'votes'])
 		.execute();
 
 	res.locals.posts = posts;
