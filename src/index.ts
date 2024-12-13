@@ -7,6 +7,8 @@ import interfaces from "./routes/main/interfaces";
 import cookieParser from "cookie-parser";
 import posts from "./routes/main/posts";
 import community from "./routes/main/community";
+import detailedPosts from "./routes/detailed/posts";
+import { authForgiving } from "./middlewares/auth";
 
 const app = express();
 
@@ -19,6 +21,8 @@ app.use(express.json());
 app.use(express.urlencoded({
 	extended: true
 }));
+
+app.get("/posts/:id", authForgiving,(req, res) => detailedPosts(req, res));
 
 const api = express.Router();
 app.use("/api", api);
