@@ -29,7 +29,7 @@ posts.post("/", async(req: Request, res: Response) => {
 	}
 
 	try {
-		await db
+		const post = await db
 			.insertInto('posts')
 			.values({
 				community_id: req.body.community,
@@ -38,9 +38,9 @@ posts.post("/", async(req: Request, res: Response) => {
 				username: res.locals.username,
 			})
 			.returning('id')
-			.execute();
+			.executeTakeFirst();
 
-		res.header("HX-Redirect", "/");
+		res.header("HX-Redirect", `/posts/${post?.id}`);
 		res.status(StatusCodes.CREATED).send();
 		return;
 	} catch (err: any) {
