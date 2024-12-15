@@ -4,6 +4,12 @@ export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
   : ColumnType<T, T | undefined, T>;
 export type Timestamp = ColumnType<Date, Date | string, Date | string>;
 
+export type comments = {
+    id: Generated<string>;
+    post_id: string;
+    content: string;
+    parent_id: string | null;
+};
 export type communities = {
     name: string;
     description: string | null;
@@ -31,6 +37,7 @@ export type users = {
     bio: string | null;
 };
 export type DB = {
+    comments: comments;
     communities: communities;
     members: members;
     posts: posts;
