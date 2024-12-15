@@ -9,6 +9,7 @@ export type comments = {
     post_id: string;
     content: string;
     parent_id: string | null;
+    author: string;
 };
 export type communities = {
     name: string;

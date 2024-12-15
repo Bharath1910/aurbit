@@ -26,6 +26,7 @@ model users {
   joined      members[]
   posts       posts[]
   communities communities[]
+  comments    comments[]
 }
 
 model communities {
@@ -68,8 +69,10 @@ model comments {
   post_id   String  @db.Uuid
   content   String
   parent_id String? @db.Uuid
+  author    String
 
   parent   comments?  @relation(name: "parent", fields: [parent_id], references: [id])
   posts    posts      @relation(fields: [post_id], references: [id])
   children comments[] @relation(name: "parent")
+  users    users?     @relation(fields: [author], references: [username])
 }
