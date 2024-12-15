@@ -50,6 +50,7 @@ model posts {
 
   user      users       @relation(fields: [username], references: [username])
   community communities @relation(fields: [community_id], references: [name])
+  comments  comments[]
 }
 
 model members {
@@ -60,4 +61,15 @@ model members {
   community communities @relation(fields: [community_id], references: [name])
 
   @@id([username, community_id])
+}
+
+model comments {
+  id        String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  post_id   String  @db.Uuid
+  content   String
+  parent_id String? @db.Uuid
+
+  parent   comments?  @relation(name: "parent", fields: [parent_id], references: [id])
+  posts    posts      @relation(fields: [post_id], references: [id])
+  children comments[] @relation(name: "parent")
 }
