@@ -96,3 +96,29 @@ model members {
 After completing the schema, I was going through the public login and signup page, I felt like the pages have 2 sources. What im trying to say is, the login page in the public directory has an HTML and the login page returned from the server also has the same HTML. It is not DRY code. I wanted to keep these HTMLs single source, so I decided to use HTMX with `hx-trigger="load"` to fetch the login and signup pages from the server. This way I can keep the public directory clean.
 
 The requests are even cached with `Cache-Control` header, so that the browser and proxy servers can cache these requests. This way the page load time and load on the server is reduced.
+
+
+# API Documentation
+
+The API for this projects starts with `/api`. It tries to follow all RESTful API standards. I also tried to make it as much self discoverable as possible. The endpoints marked with `(A)` are authenticated endpoints.
+
+### /login
+- `GET /login` - It retrieves the login html component
+- `POST /login` - Its used to login a user
+
+### /signup
+- `GET /signup` - It retrieves the signup html component
+- `POST /signup` - Its used to signup a user
+
+### /interfaces
+The interfaces are user interactive components like navbar, sidebar etc. I used this to keep the code as DRY as possible, since there are no reusable components like react components in this project.
+
+- `GET /interfaces/navbar` - It retrieves the navbar html component
+- `GET /interfaces/sidebar` - It retrieves the sidebar html component 
+
+### /posts
+- `GET /posts` - It retrieves posts 
+- `POST /posts` - It creates a post (A)
+
+### /comminity
+- `POST /community/new` - It creates a community (A)
