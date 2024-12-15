@@ -1,0 +1,26 @@
+<% for (let i = 0; i < comments.length; i++) {%>
+<div>
+	<div class="comment flex-[6] pt-4">
+		<div class="comment">
+			<div>
+				<button 
+					class="text-blue-500 hover:underline"
+					hx-get="/api/comments/<%= comments[i].id %>/replies"
+				>[+]</button>
+				<h1 class="text-sm text-white font-bold inline"><%= comments[i].author %></h1>
+				<div class="mt-1">
+					<p class="text-[#4C555A] text-sm"><%= comments[i].content %></p>
+				</div>
+			</div>
+			<div class="mt-2">
+				<button class="bg-black border-accent border-[1px] rounded-tl-full rounded-bl-full text-white text-sm pr-2"><ion-icon class="align-middle text-xl text-white pl-2 py-1" name="chevron-up"></ion-icon>0</button>
+				<button class="bg-black border-accent border-[1px] rounded-tr-full rounded-br-full"><ion-icon class="align-middle text-xl text-white pl-1 pr-2 py-1" name="chevron-down"></ion-icon></button>
+			</div>
+		</div>
+		<div id="<%= comments[i].id	%>-child" class="pl-6">
+			
+		</div>
+		<div class="border-accent border-y-[1px] w-full my-2 text-white"></div>
+	</div>
+</div>
+<% } %>
