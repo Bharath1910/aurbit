@@ -21,6 +21,23 @@ posts.get("/", async(req, res) => {
 	res.render("home/post");
 })
 
+posts.get("/:id/comments", async (req, res ) => {
+	if (!req.params.id) {
+		res.status(StatusCodes.BAD_REQUEST).send("the field id is required");
+		return;
+	}
+
+	const comments = await db
+		.selectFrom('comments')
+		.where('post_id', '=', req.params.id)
+		.where('parent_id', 'is', null)
+		.select(['id', 'content', 'author'])
+		.execute();
+
+	res.locals.comments = comments;
+	res.render("home/comment");
+});
+
 posts.post("/", async(req: Request, res: Response) => {
 	if (!req.body.community || !req.body.title || !req.body.content) {
 		res.header("HX-Retarget", "#error");
