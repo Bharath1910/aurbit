@@ -14,7 +14,7 @@ export default async function (req: Request, res: Response) {
 	try {
 		const posts = await db
 			.selectFrom('posts')
-			.select(['title', 'content', 'votes'])
+			.select(['title', 'content', 'votes', 'id'])
 			.where('id', '=', postId)
 			.executeTakeFirstOrThrow();
 			
