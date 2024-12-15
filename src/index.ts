@@ -9,6 +9,7 @@ import posts from "./routes/main/posts";
 import community from "./routes/main/community";
 import detailedPosts from "./routes/detailed/posts";
 import { authForgiving } from "./middlewares/auth";
+import comments from "./routes/main/comments";
 
 const app = express();
 
@@ -32,6 +33,7 @@ api.use("/signup", signup);
 api.use("/interfaces", interfaces);
 api.use("/posts", posts);
 api.use("/community", community);
+api.use("/comments", comments);
 
 const port = parseInt(process.env.PORT ?? "3000");
 const hostName = process.env.HOST ?? "localhost";
