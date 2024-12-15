@@ -123,3 +123,6 @@ The interfaces are user interactive components like navbar, sidebar etc. I used 
 
 ### /comminity
 - `POST /community/new` - It creates a community (A)
+
+### /comments
+- `GET /comment/:id/replies` - Fetches the replies of a comment
