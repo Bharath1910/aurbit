@@ -60,6 +60,12 @@
 			const nav = document.getElementById('menucontent');
 			nav.classList.toggle('hidden');
 		}
+
+		function showCommentBox(commentId) {
+			const box = document.getElementById(`box-${commentId}`);
+			box.classList.toggle('hidden');
+			box.classList.toggle('flex');
+		}
 	</script>
 </body>
 </html>
