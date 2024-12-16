@@ -120,9 +120,11 @@ The interfaces are user interactive components like navbar, sidebar etc. I used 
 - `GET /posts` - It retrieves posts 
 - `POST /posts` - It creates a post (A)
 - `GET /posts/:id/comments` - It retrieves the root comments of a post
+- `POST /posts/:id/comments` - Adds a new root comment to the post (A)
 
 ### /comminity
 - `POST /community/new` - It creates a community (A)
 
 ### /comments
-- `GET /comment/:id/replies` - Fetches the replies of a comment
+- `GET /comments/:id/replies` - Fetches the replies of a comment
+- `POST /comments/:id/replies` - Posts a reply to a comment (A)
