@@ -35,9 +35,16 @@
 				<div class="border-accent border-y-[1px] w-full my-2 text-white"></div>
 			</div>
 			<form class="flex gap-2 mt-4">
-				<input type="text" placeholder="Add a comment" class="bg-accent w-full py-2 rounded-full text-l px-4">
-				<button type="submit" class="bg-brand rounded-full px-3 text-white font-bold">Comment</button>
+				<input name="content" type="text" placeholder="Add a comment" class="text-white bg-accent w-full py-2 rounded-full text-l px-4">
+				<button
+					type="submit" 
+					class="bg-brand rounded-full px-3 text-white font-bold"
+					hx-post="/api/posts/<%= data.id %>/comments"
+					hx-target="#comment"
+				>Comment</button>
 			</form>
+
+			<div id="comment"></div>
 
 			<div
 				hx-get="/api/posts/<%= data.id %>/comments"
@@ -66,6 +73,11 @@
 			box.classList.toggle('hidden');
 			box.classList.toggle('flex');
 		}
+
+		document.body.addEventListener('htmx:afterRequest', evt => {
+			const formInp = document.querySelector("form.flex > input:nth-child(1)")
+			formInp.value = '';
+		})
 	</script>
 </body>
 </html>
