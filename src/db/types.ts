@@ -4,6 +4,16 @@ export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
   : ColumnType<T, T | undefined, T>;
 export type Timestamp = ColumnType<Date, Date | string, Date | string>;
 
+export const Interaction = {
+    UPVOTE: "UPVOTE",
+    DOWNVOTE: "DOWNVOTE"
+} as const;
+export type Interaction = (typeof Interaction)[keyof typeof Interaction];
+export type comment_interactions = {
+    comment_id: string;
+    user_id: string;
+    type: Interaction;
+};
 export type comments = {
     id: Generated<string>;
     post_id: string;
@@ -19,6 +29,11 @@ export type communities = {
 export type members = {
     community_id: string;
     username: string;
+};
+export type post_interactions = {
+    post_id: string;
+    user_id: string;
+    type: Interaction;
 };
 export type posts = {
     id: Generated<string>;
@@ -38,9 +53,11 @@ export type users = {
     bio: string | null;
 };
 export type DB = {
+    comment_interactions: comment_interactions;
     comments: comments;
     communities: communities;
     members: members;
+    post_interactions: post_interactions;
     posts: posts;
     users: users;
 };
