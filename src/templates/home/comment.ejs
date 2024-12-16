@@ -22,8 +22,14 @@
 				><ion-icon class="align-middle text-lg text-white px-3 py-1" name="chatbubble-outline"></ion-icon></button>
 			</div>
 		</div>
-		<form id="box-<%= comments[i].id %>" class="hidden gap-2 mt-4">
-			<input type="text" placeholder="Add a comment" class="bg-accent w-full py-2 rounded-full text-l px-4">
+		<form 
+			id="box-<%= comments[i].id %>"
+			class="hidden gap-2 mt-4"
+			hx-post="/api/comments/<%= comments[i].id %>/replies"
+			hx-target="#child-<%= comments[i].id	%>"
+		>
+			<input name="content" type="text" placeholder="Add a comment" class="text-white bg-accent w-full py-2 rounded-full text-l px-4">
+			<input hidden value="<%= comments[i].post_id %>" name="postId" type="text">
 			<button 
 				type="submit" 
 				class="bg-brand rounded-full px-3 text-white font-bold"

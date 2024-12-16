@@ -31,7 +31,7 @@ posts.get("/:id/comments", async (req, res ) => {
 		.selectFrom('comments')
 		.where('post_id', '=', req.params.id)
 		.where('parent_id', 'is', null)
-		.select(['id', 'content', 'author'])
+		.select(['id', 'content', 'author', 'post_id'])
 		.execute();
 
 	res.locals.comments = comments;
