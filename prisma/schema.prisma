@@ -23,10 +23,12 @@ model users {
   aura     Int     @default(0)
   bio      String?
 
-  joined      members[]
-  posts       posts[]
-  communities communities[]
-  comments    comments[]
+  joined               members[]
+  posts                posts[]
+  communities          communities[]
+  comments             comments[]
+  post_interactions    post_interactions[]
+  comment_interactions comment_interactions[]
 }
 
 model communities {
@@ -49,9 +51,10 @@ model posts {
   image        String?
   created_at   DateTime @default(now())
 
-  user      users       @relation(fields: [username], references: [username])
-  community communities @relation(fields: [community_id], references: [name])
-  comments  comments[]
+  user        users               @relation(fields: [username], references: [username])
+  community   communities         @relation(fields: [community_id], references: [name])
+  comments    comments[]
+  interaction post_interactions[]
 }
 
 model members {
@@ -71,8 +74,36 @@ model comments {
   parent_id String? @db.Uuid
   author    String
 
-  parent   comments?  @relation(name: "parent", fields: [parent_id], references: [id])
-  posts    posts      @relation(fields: [post_id], references: [id])
-  children comments[] @relation(name: "parent")
-  users    users?     @relation(fields: [author], references: [username])
+  parent               comments?              @relation(name: "parent", fields: [parent_id], references: [id])
+  posts                posts                  @relation(fields: [post_id], references: [id])
+  children             comments[]             @relation(name: "parent")
+  users                users?                 @relation(fields: [author], references: [username])
+  comment_interactions comment_interactions[]
+}
+
+enum Interaction {
+  UPVOTE
+  DOWNVOTE
+}
+
+model post_interactions {
+  post_id String      @db.Uuid
+  user_id String
+  type    Interaction
+
+  posts posts @relation(fields: [post_id], references: [id])
+  users users @relation(fields: [user_id], references: [username])
+
+  @@id([post_id, user_id, type])
+}
+
+model comment_interactions {
+  comment_id String      @db.Uuid
+  user_id    String
+  type       Interaction
+
+  comments comments @relation(fields: [comment_id], references: [id])
+  users    users    @relation(fields: [user_id], references: [username])
+
+  @@id([comment_id, user_id, type])
 }
