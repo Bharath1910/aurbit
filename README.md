@@ -121,6 +121,8 @@ The interfaces are user interactive components like navbar, sidebar etc. I used 
 - `POST /posts` - It creates a post (A)
 - `GET /posts/:id/comments` - It retrieves the root comments of a post
 - `POST /posts/:id/comments` - Adds a new root comment to the post (A)
+- `POST /posts/:id/upvote` - Upvotes a post (A)
+- `POST /posts/:id/downvote` - Downvotes a post (A)
 
 ### /comminity
 - `POST /community/new` - It creates a community (A)
@@ -128,3 +130,5 @@ The interfaces are user interactive components like navbar, sidebar etc. I used 
 ### /comments
 - `GET /comments/:id/replies` - Fetches the replies of a comment
 - `POST /comments/:id/replies` - Posts a reply to a comment (A)
+- `POST /comments/:id/upvote` - Upvotes a comment (A)
+- `POST /comments/:id/downvote` - Downvotes a comment (A)
