@@ -94,7 +94,7 @@ model post_interactions {
   posts posts @relation(fields: [post_id], references: [id])
   users users @relation(fields: [user_id], references: [username])
 
-  @@id([post_id, user_id, type])
+  @@id([post_id, user_id])
 }
 
 model comment_interactions {
@@ -105,5 +105,5 @@ model comment_interactions {
   comments comments @relation(fields: [comment_id], references: [id])
   users    users    @relation(fields: [user_id], references: [username])
 
-  @@id([comment_id, user_id, type])
+  @@id([comment_id, user_id])
 }

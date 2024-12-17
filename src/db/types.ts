@@ -4,11 +4,8 @@ export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
   : ColumnType<T, T | undefined, T>;
 export type Timestamp = ColumnType<Date, Date | string, Date | string>;
 
-export const Interaction = {
-    UPVOTE: "UPVOTE",
-    DOWNVOTE: "DOWNVOTE"
-} as const;
-export type Interaction = (typeof Interaction)[keyof typeof Interaction];
+import type { Interaction } from "./enums";
+
 export type comment_interactions = {
     comment_id: string;
     user_id: string;
