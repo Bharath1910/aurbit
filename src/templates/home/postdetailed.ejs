@@ -68,6 +68,11 @@
 			nav.classList.toggle('hidden');
 		}
 
+		function toggleVote(turnOnButton, turnOffButton) {
+			turnOnButton.classList.toggle('bg-brand');
+			turnOffButton.classList.remove('bg-brand');
+		}
+
 		function showCommentBox(commentId) {
 			const box = document.getElementById(`box-${commentId}`);
 			box.classList.toggle('hidden');

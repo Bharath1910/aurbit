@@ -14,8 +14,19 @@
 				</div>
 			</div>
 			<div class="mt-2">
-				<button class="bg-black border-accent border-[1px] rounded-tl-full rounded-bl-full text-white text-sm pr-2"><ion-icon class="align-middle text-xl text-white pl-2 py-1" name="chevron-up"></ion-icon>0</button>
-				<button class="bg-black border-accent border-[1px] rounded-tr-full rounded-br-full"><ion-icon class="align-middle text-xl text-white pl-1 pr-2 py-1" name="chevron-down"></ion-icon></button>
+				<button 
+					class="bg-black border-accent border-[1px] rounded-tl-full rounded-bl-full text-white text-sm pr-2"
+					hx-post="/api/comments/<%= comments[i].id %>/upvote"
+					hx-swap="none"
+					onclick="toggleVote(this, this.nextElementSibling)"
+				><ion-icon class="align-middle text-xl text-white pl-2 py-1" name="chevron-up"></ion-icon>0</button>
+				
+				<button 
+					class="bg-black border-accent border-[1px] rounded-tr-full rounded-br-full"
+					hx-post="/api/comments/<%= comments[i].id %>/downvote"
+					hx-swap="none"
+					onclick="toggleVote(this, this.previousElementSibling)"
+					><ion-icon class="align-middle text-xl text-white pl-1 pr-2 py-1" name="chevron-down"></ion-icon></button>
 				<button 
 					class="bg-black border-accent border-[1px] rounded-full"
 					onclick="showCommentBox('<%= comments[i].id	%>')"
