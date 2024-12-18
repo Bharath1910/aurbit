@@ -12,9 +12,15 @@ posts.get("/", async(req, res) => {
 	// 	return;
 	// }
 
+	const page = req.query.page ? parseInt(req.query.page as string) : 1;
+	const limit = req.query.limit ? parseInt(req.query.limit as string) : 10;
+
 	const posts = await db
 		.selectFrom('posts')
 		.select(['id', 'title', 'content', 'votes'])
+		.orderBy(['created_at', 'id'])
+		.limit(limit)
+		.offset((page - 1) * limit)
 		.execute();
 
 	res.locals.posts = posts;
@@ -27,11 +33,17 @@ posts.get("/:id/comments", async (req, res ) => {
 		return;
 	}
 
+	const page = req.query.page ? parseInt(req.query.page as string) : 1;
+	const limit = req.query.limit ? parseInt(req.query.limit as string) : 10;
+
 	const comments = await db
 		.selectFrom('comments')
 		.where('post_id', '=', req.params.id)
 		.where('parent_id', 'is', null)
 		.select(['id', 'content', 'author', 'post_id'])
+		.orderBy('id')
+		.limit(limit)
+		.offset((page - 1) * limit)
 		.execute();
 
 	res.locals.comments = comments;
