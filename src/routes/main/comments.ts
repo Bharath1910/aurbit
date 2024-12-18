@@ -12,11 +12,17 @@ comments.get("/:id/replies", async (req, res) => {
 		return;
 	}
 
+	const page = req.query.page ? parseInt(req.query.page as string) : 1;
+	const limit = req.query.limit ? parseInt(req.query.limit as string) : 10;
+
 	try {
 		const replies = await db
 			.selectFrom('comments')
 			.where('parent_id', '=', req.params.id)
 			.select(['id', 'content', 'author'])
+			.orderBy('id')
+			.limit(limit)
+			.offset((page - 1) * limit)
 			.execute();
 
 		res.locals.comments = replies;
