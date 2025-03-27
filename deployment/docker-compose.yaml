@@ -1,6 +1,9 @@
 services:
   server:
     image: ghcr.io/bharath1910/aurbit:1.0.0
+    container_name: aurbit-endpoint
+    networks:
+      - aurbit
     ports:
       - "5050:5050"
     env_file:
@@ -8,6 +11,8 @@ services:
 
   nginx:
     image: nginx
+    networks:
+      - aurbit
     ports:
       - "80:80"
       - "443:443"
@@ -19,8 +24,10 @@ services:
   # Metrices
   fluentd:
     build: ./fluentd
+    container_name: aurbit-fluentd
+    networks:
+      - aurbit
     ports:
-      - "24224:24224"
       - "24231:24231"
 
     depends_on:
@@ -32,10 +39,17 @@ services:
 
   prometheus:
     image: prom/prometheus
+    networks:
+      - aurbit
     ports:
       - "127.0.0.1:9090:9090"
     volumes:
       - "./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml"
+      - "prometheus-data:/prometheus"
 
 volumes:
   nginxlogs:
+  prometheus-data:
+
+networks:
+  aurbit:
