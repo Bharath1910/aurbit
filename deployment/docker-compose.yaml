@@ -1,0 +1,37 @@
+services:
+  server:
+    image: ghcr.io/bharath1910/aurbit:1.0.0
+    ports:
+      - "5050:5050"
+    env_file:
+      - ../.env
+
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+
+    volumes:
+      - ./data/nginx/:/var/log/nginx/
+
+  # Metrices
+  fluentd:
+    build: ./fluentd
+    ports:
+      - "24224:24224"
+      - "24231:24231"
+
+    depends_on:
+      - nginx
+
+    volumes:
+      - ./data/nginx/:/var/log/nginx/:ro
+      - ./fluentd/fluent.conf:/etc/fluent/fluentd.conf
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "127.0.0.1:9090:9090"
+    volumes:
+      - "./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml"
