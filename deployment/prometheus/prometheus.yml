@@ -26,4 +26,4 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-      - targets: ["aurbit-fluentd:24231"]
+      - targets: ["aurbit-fluentd:24231", "cadvisor:8080"]
