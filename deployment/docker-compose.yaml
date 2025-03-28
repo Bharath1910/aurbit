@@ -4,8 +4,6 @@ services:
     container_name: aurbit-endpoint
     networks:
       - aurbit
-    ports:
-      - "5050:5050"
     env_file:
       - ../.env
 
@@ -16,7 +14,6 @@ services:
     ports:
       - "80:80"
       - "443:443"
-
     volumes:
       - nginxlogs:/logs
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
@@ -29,10 +26,8 @@ services:
       - aurbit
     ports:
       - "24231:24231"
-
     depends_on:
       - nginx
-
     volumes:
       - nginxlogs:/var/log/nginx/:ro
       - ./fluentd/fluent.conf:/etc/fluent/fluentd.conf
@@ -47,9 +42,41 @@ services:
       - "./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml"
       - "prometheus-data:/prometheus"
 
+  # Data
+  migrations:
+    image: node:23-alpine
+    command: npx prisma migrate deploy --schema /app/prisma/schema.prisma
+    env_file:
+      - ../.env
+    depends_on:
+      - db
+    volumes:
+      - ../prisma:/app/prisma
+    networks:
+      - aurbit
+
+  db:
+    image: postgres
+    container_name: aurbit-db
+    env_file:
+      - ../.env
+    volumes:
+      - db:/data/postgres
+    ports:
+      - "5434:5432"
+    networks:
+      - aurbit
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
 volumes:
   nginxlogs:
   prometheus-data:
+  db:
 
 networks:
   aurbit:
